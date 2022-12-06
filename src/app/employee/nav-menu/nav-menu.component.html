@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark px-3">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a class="nav-item nav-link" routerLink="./sitting" routerLinkActive="active" >Sitting</a>
+        <a class="nav-item nav-link" routerLink="./seatingarea" routerLinkActive="active" >Seating Area</a>
+        <a class="nav-item nav-link" routerLink="./employeemanage" routerLinkActive="active" >Employees</a>
+        <a class="nav-item nav-link" routerLink="./ordersummary" routerLinkActive="active" >Order Summaries</a>
         <a class="nav-item nav-link" routerLink="/#" (click)="logOut()" routerLinkActive="active">Log Out</a>
     </div>
 </nav>
