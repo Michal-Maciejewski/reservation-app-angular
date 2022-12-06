@@ -1,0 +1,43 @@
+<h1>Reservation</h1>
+
+<div class="card">
+    <div class="card-header">Step One</div>
+    <form class="card-body">
+        <input class="form-control" (change)="selectDate()" type="date" >
+
+        <div *ngIf="dateSelected">
+            <button (click)="selectSitting()" class="btn btn-primary" type="button" *ngFor="let item of sittingsForDate">{{item}}</button>
+        </div>
+        <div *ngIf="sittingSelected">
+            <button (click)="selectTime()" class="btn btn-primary" type="button" *ngFor="let time of sittingTimes">{{time}}</button>
+        </div>
+
+        <div *ngIf="timeSelected">
+            <div class="mb-3">
+                <label class="form-label">Amount of Patrons</label>
+                <input type="number" minlength="1" min="1" value="1" name="phoneNumnber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" name="phoneNumnber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="phoneNumnber" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" name="email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phoneNumnber" class="form-control" />
+            </div>
+            <button type="button" [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Create Booking
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </div>
+    </form>
+</div>

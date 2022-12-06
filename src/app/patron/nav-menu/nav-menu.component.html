@@ -1,4 +1,6 @@
-<div>This is the nav</div>
-<a routerLink="/" >Default</a>
-<a routerLink="/employee" >Employee</a>
-<a routerLink="/patron" >Patron</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/#" routerLinkActive="active" (click)="logOut()">Log Out</a>
+    </div>
+</nav>
