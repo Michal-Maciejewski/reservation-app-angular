@@ -5,7 +5,7 @@ import { User } from "@app/_models/user";
 import { environment } from "@environments/environment";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from 'rxjs/operators'
-import { IRandomUsers } from '@app/_models/IRandomUsers';
+import { IEmployeeTableData} from '@app/_models/iemployee-table-data';
 
 @Injectable({providedIn: 'root'})
 export class EmployeeService {
@@ -14,8 +14,8 @@ export class EmployeeService {
   
    constructor(private http: HttpClient) { }
 
-   getRandomUsers(): Observable<IRandomUsers> {
-    const URL = `${this.baseURL}/api/users/random_user?size=10`;
-    return this.http.get<IRandomUsers>(URL);
+   getRandomUsers(orderBy?: string, direction?: string, take?: number, skip?: number, search?: string): Observable<IEmployeeTableData> {
+    const URL = `${this.baseURL}/employee/`;
+    return this.http.get<IEmployeeTableData>(URL);
    }
 }

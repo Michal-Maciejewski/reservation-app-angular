@@ -1,12 +1,34 @@
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { TestBed } from "@angular/core/testing";
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 const users = [
     {id: 1, email: 'test@gmail.com', password: 'test', firstName: 'Test', lastName: 'User', roles: ['employee']},
     {id: 2, email: 'test2@gmail.com', password: 'test', firstName: 'Test', lastName: 'User', roles: ['haha']},
-    {id: 3, email: 'test3@gmail.com', password: 'test', firstName: 'Test', lastName: 'User', roles: ['patron']}
+    {id: 3, email: 'test3@gmail.com', password: 'test', firstName: 'Test', lastName: 'User', roles: ['patron']},
+    {id: 1, email: 'test4@gmail.com', password: 'test', firstName: 'Test', lastName: 'User', roles: ['employee', 'manager']},
+]
+
+const employees = 
+[
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Sonia', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Adam', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Blake', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Matthew', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Sophia', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Jordan', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'Julia', lastName: 'Beard', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'},
+    {firstName: 'John', lastName: 'Snow', email: 'JohnSnow@BeanScene.com', phoneNumber: '043354544'}
 ]
 
 @Injectable()
@@ -27,6 +49,8 @@ export class FakeBackendInterceptor implements HttpInterceptor
                     return authenticate();
                 case url.endsWith('/patron') && method === 'POST':
                     return registerPatron();
+                case url.endsWith('/employee') && method === 'GET':
+                    return returnEmployees();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -47,6 +71,11 @@ export class FakeBackendInterceptor implements HttpInterceptor
                 token: 'fake-jwt-token',
                 roles: user.roles
             })
+        }
+
+        function returnEmployees()
+        {
+            return ok(employees);
         }
 
         function registerPatron()

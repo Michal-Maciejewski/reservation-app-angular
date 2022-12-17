@@ -121,7 +121,6 @@ import {DialogModule} from '@angular/cdk/dialog';
     BrowserModule,
     FormsModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [

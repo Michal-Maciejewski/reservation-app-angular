@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header p-2"><h1 mat-dialog-title>Delete file</h1></div>
+    <div class="card-body p-2">
+        <div mat-dialog-content>
+            <form [formGroup]="form">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" formControlName="sittingType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sittingType.errors }" />
+                    <div *ngIf="submitted && f.sittingType.errors" class="invalid-feedback">
+                        <div *ngIf="f.sittingType.errors.required">Email is required</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" formControlName="notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" />
+                    <div *ngIf="submitted && f.notes.errors" class="invalid-feedback">
+                        <div *ngIf="f.notes.errors.required">Email is required</div>
+                    </div>
+                </div>
+            </form>>
+        </div>
+    </div>
+    <div class="card-footer p-2">
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close (click)="onCloseDialog()" >No</button>
+            <button mat-button mat-dialog-close cdkFocusInitial (click)="submit()">Ok</button>
+        </div>
+    </div>
+</div>
