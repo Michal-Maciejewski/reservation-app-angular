@@ -128,7 +128,7 @@ import {DialogModule} from '@angular/cdk/dialog';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
     //procider used to create fake backend
-    fakeBackendProvider
+    //fakeBackendProvider
   ],
   bootstrap: [AppComponent],
 })

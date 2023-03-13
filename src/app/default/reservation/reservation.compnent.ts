@@ -37,7 +37,6 @@ export class ReservationComponent implements OnInit, AfterViewInit{
     return dates;
   }
 
-
   firstFormGroup = this._formBuilder.group({
     amountOfGuests:[1, Validators.required],
     date:['', Validators.required],

@@ -25,7 +25,7 @@ export class AuthenticationService {
 
     login(email: string, password: string)
     {
-        return this.httpClient.post<any>(`${environment.ApiUrl}/token`, { email, password })
+        return this.httpClient.post<any>(`${environment.ApiUrl}user/signin`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -39,12 +39,12 @@ export class AuthenticationService {
         var user = this.userSubject.getValue();
         if(user != undefined)
         {
-            if(user.roles?.find((obj) =>{return obj === "patron";}))
+            if(user.roles?.find((obj) =>{return obj.toLocaleLowerCase() === "patron";}))
             {
                 return "patron";
             }
 
-            if(user.roles?.find((obj) =>{return obj === "employee";}))
+            if(user.roles?.find((obj) =>{return obj.toLocaleLowerCase() === "employee";}))
             {
                 return "employee";
             }
