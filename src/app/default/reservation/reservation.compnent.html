@@ -27,14 +27,22 @@
         </mat-form-field>
 
         <div [ngClass]="{'d-none': !dateSelected}" >
-          <label class="example-margin">Select Time:</label>
+          <label class="example-margin">Select Sitting:</label>
           <br/>
-          <mat-radio-group formControlName="sitting" (change)="selectSitting()" [ngClass]="{ 'is-invalid': f.pick.errors }" >
+          <mat-chip-listbox selectable="true" multiple="false" formControlName="sitting" (change)="selectSitting()" [ngClass]="{ 'is-invalid': f.pick.errors }" >
+            <mat-chip-option *ngFor="let sitting of (sittingTypeOb$ | async)" value="{{sitting}}" 
+            [value]="sitting" 
+            [disabled]="false"
+            (selectionChange)="selectSitting()"
+            >{{sitting}}</mat-chip-option>
+          </mat-chip-listbox>
+
+          <!--<mat-radio-group formControlName="sitting" (change)="selectSitting()" [ngClass]="{ 'is-invalid': f.pick.errors }" >
             <mat-radio-button class="p-1" *ngFor="let sitting of (sittingTypeOb$ | async)" value="{{sitting}}" 
             [value]="sitting" 
             [disabled]="false"
             >{{sitting}}</mat-radio-button>
-          </mat-radio-group>
+          </mat-radio-group>-->
           <div *ngIf="dateSelected && f.sitting.errors" class="invalid-feedback">
             <div *ngIf="f.sitting.errors.required">Sitting is required</div>
           </div>

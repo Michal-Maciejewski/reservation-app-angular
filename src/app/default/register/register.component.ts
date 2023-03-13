@@ -45,7 +45,7 @@ export class RegisterComponent{
 
         this.error = '';
         this.loading = true;
-        this.patronService.registerPatron({email: this.f.email.value, firstName: this.f.firstName.value, lastName: this.f.lastName.value, password: this.f.password.value})
+        this.patronService.registerPatron({email: this.f.email.value, firstName: this.f.firstName.value, lastName: this.f.lastName.value, password: this.f.password.value, phoneNumber: this.f.phoneNumber.value, confirmPassword: this.f.confirmPassword.value})
             .pipe(first())
             .subscribe({
                 next: () =>{

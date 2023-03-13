@@ -62,6 +62,7 @@ import {DialogModule} from '@angular/cdk/dialog';
 @NgModule({
   exports:[
     A11yModule,
+    MatChipsModule,
     CdkAccordionModule,
     ClipboardModule,
     CdkMenuModule,

@@ -5,7 +5,7 @@ import { User } from "@app/_models/user";
 import { environment } from "@environments/environment";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from 'rxjs/operators'
-import { PatronRegister } from "@app/_models/patron-register";
+import { RegisterMemberModel } from "@app/_models/patron-register";
 
 @Injectable({providedIn: 'root'})
 export class PatronService{
@@ -15,9 +15,10 @@ export class PatronService{
 
     }
 
-    registerPatron(user: PatronRegister)
+    registerPatron(user: RegisterMemberModel)
     {
-        return this.httpClient.post<any>(`${environment.ApiUrl}/patron`, { user })
+        debugger;
+        return this.httpClient.post<RegisterMemberModel>(`${environment.ApiUrl}user/register-member`, user)
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 return user;

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
-import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { MatDatepicker } from "@angular/material/datepicker";
 import { BehaviorSubject, first, observable, Observable, of } from "rxjs";
 
@@ -89,10 +89,21 @@ export class ReservationComponent implements OnInit, AfterViewInit{
 
   selectSitting()
   {
-    this.sittingSelected = true;
-    this.firstFormGroup.controls.pick.setValue('');
-    this.sittingTimesOb$.next(['9:00','9:30', '10:00', '10:30']);
-    this.timeSelected = false;
+    if(!this.f.sitting.errors || this.f.sitting.untouched)
+    {
+      debugger;
+      this.sittingSelected = true;
+      this.firstFormGroup.controls.pick.setValue('');
+      this.sittingTimesOb$.next(['9:00','9:30', '10:00', '10:30']);
+      this.timeSelected = false;
+    }
+    else
+    {
+      this.sittingSelected = false;
+      this.firstFormGroup.controls.pick.setValue('');
+      this.sittingTimesOb$.next([]);
+      this.timeSelected = false;
+    }
   }
 
   selectTime()
