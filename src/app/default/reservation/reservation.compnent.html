@@ -29,11 +29,11 @@
         <div [ngClass]="{'d-none': !dateSelected}" >
           <label class="example-margin">Select Sitting:</label>
           <br/>
-          <mat-chip-listbox selectable="true" multiple="false" formControlName="sitting" (change)="selectSitting()" [ngClass]="{ 'is-invalid': f.pick.errors }" >
+          <mat-chip-listbox selectable="true" multiple="false" formControlName="sitting" [ngClass]="{ 'is-invalid': f.pick.errors }" >
             <mat-chip-option *ngFor="let sitting of (sittingTypeOb$ | async)" value="{{sitting}}" 
             [value]="sitting" 
             [disabled]="false"
-            (selectionChange)="selectSitting()"
+            (selectionChange)="selectSitting($event)"
             >{{sitting}}</mat-chip-option>
           </mat-chip-listbox>
 

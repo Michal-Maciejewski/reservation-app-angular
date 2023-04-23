@@ -80,28 +80,41 @@ export class ReservationComponent implements OnInit, AfterViewInit{
     this.dateSelected = true;
     this.sittingSelected = false;
     this.timeSelected = false;
+
     this.firstFormGroup.controls.sitting.setValue('');
     this.firstFormGroup.controls.pick.setValue('');
 
     this.sittingTypeOb$.next(['Breakfast','Lunch','Dinner']);
-
+    this.firstFormGroup.controls.sitting.markAsUntouched();
+    this.firstFormGroup.controls.sitting.markAsPristine();
   }
 
-  selectSitting()
+  selectSitting($event:any)
   {
-    if(!this.f.sitting.errors || this.f.sitting.untouched)
+    if(!$event.selected && $event.isUserInput)
     {
-      debugger;
+      $event.selected = true;
+      $event.source.selected = true;
+      return;
+    }
+
+    if((!this.f.sitting.errors || this.f.sitting.pristine) && $event.isUserInput)
+    {
       this.sittingSelected = true;
       this.firstFormGroup.controls.pick.setValue('');
-      this.sittingTimesOb$.next(['9:00','9:30', '10:00', '10:30']);
-      this.timeSelected = false;
-    }
-    else
-    {
-      this.sittingSelected = false;
-      this.firstFormGroup.controls.pick.setValue('');
-      this.sittingTimesOb$.next([]);
+      var type = $event.source.value;
+      if(type == "Breakfast")
+      {
+        this.sittingTimesOb$.next(['9:00','9:30', '10:00', '10:30']);
+      }
+      else if(type == "Lunch")
+      {
+        this.sittingTimesOb$.next(['12:00','12:30', '1:00', '1:30']);
+      }
+      else
+      {
+        this.sittingTimesOb$.next(['5:00','5:30', '6:00', '6:30']);
+      }
       this.timeSelected = false;
     }
   }
