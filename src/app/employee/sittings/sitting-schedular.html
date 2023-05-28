@@ -1,29 +1,76 @@
-<div class="card">
-    <div class="card-header p-2"><h1 mat-dialog-title>Delete file</h1></div>
+<div class="card" style="max-width: fit-content;">
+    <div class="card-header p-1">
+        <h1 mat-dialog-title>Create Schedule</h1>
+        <button class="btn btn-close" style="position: absolute;top: 5px; right: 5px;" (click)="onCloseDialog()"></button>
+    </div>
+
     <div class="card-body p-2">
         <div mat-dialog-content>
             <form [formGroup]="form">
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Sun</label>
+                  
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Mon</label>
+                  
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Tue</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck4">Wed</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck5">Thu</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck6">Fri</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck7">Sat</label>
+                  </div>
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" formControlName="sittingType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sittingType.errors }" />
-                    <div *ngIf="submitted && f.sittingType.errors" class="invalid-feedback">
-                        <div *ngIf="f.sittingType.errors.required">Email is required</div>
+                    <label class="form-label">Title</label>
+                    <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Email is required</div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Sitting</label>
                     <input type="text" formControlName="notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" />
                     <div *ngIf="submitted && f.notes.errors" class="invalid-feedback">
                         <div *ngIf="f.notes.errors.required">Email is required</div>
                     </div>
                 </div>
-            </form>>
+                <div class="mb-3">
+                    <label class="form-label">Capacity</label>
+                    <input type="text" formControlName="capacity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.capacity.errors }" />
+                    <div *ngIf="submitted && f.capacity.errors" class="invalid-feedback">
+                        <div *ngIf="f.capacity.errors.required">Email is required</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Start Date</label>
+                    <input type="datetime-local" formControlName="start" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.start.errors }" />
+                    <div *ngIf="submitted && f.start.errors" class="invalid-feedback">
+                        <div *ngIf="f.start.errors.required">Email is required</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">End Date</label>
+                    <input type="datetime-local" formControlName="end" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.end.errors }" />
+                    <div *ngIf="submitted && f.end.errors" class="invalid-feedback">
+                        <div *ngIf="f.end.errors.required">Email is required</div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="card-footer p-2">
-        <div mat-dialog-actions>
-            <button mat-button mat-dialog-close (click)="onCloseDialog()" >No</button>
-            <button mat-button mat-dialog-close cdkFocusInitial (click)="submit()">Ok</button>
+        <div mat-dialog-actions style="float: right;">
+            <button class="btn btn-success" cdkFocusInitial (click)="submit()">Create</button>
+            <button class="btn btn-danger" (click)="onCloseDialog()" >Cancel</button>
         </div>
     </div>
 </div>

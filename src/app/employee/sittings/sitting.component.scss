@@ -1,0 +1,10 @@
+::ng-deep .custom-event
+{
+    background-color: red;
+    border-color: cornflowerblue;
+}
+
+::ng-deep .custom-event div:not(.special)
+{
+    color: black;
+}

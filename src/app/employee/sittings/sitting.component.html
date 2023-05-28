@@ -1,13 +1,22 @@
 <h1>Sitting Schedular</h1>
 <div>
     <full-calendar [options]="calendarOptions">
-        <ng-template #eventContent let-arg>
-            <b>{{ arg.timeText }}</b>
-            <i>{{ arg.event.title }}</i>
-          </ng-template>
+        <!-- <ng-template class="custom-event" style="background-color: brown;" #eventContent let-arg>
+            <div *ngIf='arg.event.id == ""; else another'>
+                <b >{{ arg.timeText }}</b>
+                <i>{{ arg.event.title }}</i>
+            </div>
+            <ng-template #another>
+                <div *ngIf="arg.event.startEditable; else another2">
+                    <b>{{ arg.event.startStr}}</b>
+                </div>
+            </ng-template>
+            <ng-template #another2>
+
+            </ng-template>
+          </ng-template> -->
     </full-calendar>
 </div>
-
 
 <div class="modal">
 

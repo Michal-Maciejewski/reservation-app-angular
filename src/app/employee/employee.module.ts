@@ -21,6 +21,12 @@ import { SittingComponent } from "./sittings/sitting.component";
 import { MatDialogClose } from "@angular/material/dialog";
 import { DialogAnimationsExampleDialog } from "./sittings/sitting-schedular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
     imports: [
@@ -36,7 +42,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         FullCalendarModule,
         MatDialogModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatRadioModule,
+        MatChipsModule,
     ],
     declarations: [
         LayoutComponent,

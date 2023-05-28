@@ -1,8 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from "@angular/router";
 import { first } from 'rxjs/operators';
+
+import { AfterViewInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { MatDatepicker } from "@angular/material/datepicker";
+import { BehaviorSubject, observable, Observable, of } from "rxjs";
 
 
 @Component({
@@ -24,7 +28,11 @@ import { first } from 'rxjs/operators';
     ngOnInit() {
      
         this.form = this.formBuilder.group({
+            title: '',
+            start: '',
+            end: '',
             sittingType: '',
+            capacity: '',
             notes: ''
         });
     }
